@@ -1,0 +1,16 @@
+* flask-redlock
+Redis lock flask extension
+
+** Example
+#+BEGIN_SRC python
+from flask_redlock import RedisLock
+
+redis_lock = RedisLock()
+redis_lock.init_app(app)
+
+with redis_lock.lock('something.lock', 3000, retry=10, interval=0.2) as lock:
+    if not lock:
+        return 'busy!'
+
+    # Do your work here ...
+#+END_SRC
