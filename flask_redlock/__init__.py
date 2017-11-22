@@ -6,7 +6,7 @@ from contextlib import contextmanager
 from redlock import Redlock
 
 
-__version__ = '0.0.1'
+__version__ = '0.0.3'
 
 
 class LockTimeout(Exception):
@@ -38,7 +38,11 @@ class RedisLock(object):
         self.setup()
 
     def setup(self):
-        self.dlm = Redlock([{"host": self.host, "port": 6379, "db": self.db}])
+        self.dlm = Redlock([{
+            "host": self.host,
+            "port": self.port,
+            "db": self.db
+        }])
 
     @contextmanager
     def lock(self, resource, ttl, retry=1, interval=0.1):

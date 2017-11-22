@@ -30,7 +30,7 @@ from setuptools import setup
 
 setup(
     name='Flask-Redlock',
-    version='0.0.1',
+    version='0.0.3',
     url='https://github.com/TheWaWaR/flask-redlock',
     license='MIT',
     author='Qian Linfeng',
